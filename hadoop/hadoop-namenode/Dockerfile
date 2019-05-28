@@ -13,8 +13,7 @@ COPY mapred-site.xml $HADOOP_PREFIX/etc/hadoop/
 RUN mkdir -p $HIVE_HOME \
     && curl -SL "http://mirrors.hust.edu.cn/apache/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz" \
     | tar -zxC /opt \
-    && rm -f /temp/hive.tar.gz
-COPY hive-site.xml $HIVE_HOME/conf/
+    && rm -f /temp/hive.tar.gz \
+    && wget -P $HIVE_HOME/lib/ http://central.maven.org/maven2/mysql/mysql-connector-java/$MYSQL_DRIVER_VERSION/mysql-connector-java-$MYSQL_DRIVER_VERSION.jar 
 
-# Copy MySQL Connector/J Driver to Hive library
-COPY http://central.maven.org/maven2/mysql/mysql-connector-java/$MYSQL_DRIVER_VERSION/mysql-connector-java-$MYSQL_DRIVER_VERSION.jar $HIVE_HOME/lib/
+COPY hive-site.xml $HIVE_HOME/conf/
