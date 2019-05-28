@@ -14,7 +14,7 @@ ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/
 # ADD apache-hive-$HIVE_VERSION-bin.tar.gz /opt/
 RUN mkdir -p /opt \
     && curl -SL http://mirrors.hust.edu.cn/apache/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz \
-    | tar -xJC /opt \
+    | tar -xJC /opt
 
 # Copy Hive Config file
 ADD hive-site.xml $HIVE_HOME/conf/
