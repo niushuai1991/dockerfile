@@ -11,9 +11,10 @@ ENV MYSQL_DRIVER_VERSION 5.1.44
 ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/
 
 # Copy Hive
-# 如果从网上下载，docker不会自动解压
-# ADD http://mirrors.hust.edu.cn/apache/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz /opt/
-ADD apache-hive-$HIVE_VERSION-bin.tar.gz /opt/
+# ADD apache-hive-$HIVE_VERSION-bin.tar.gz /opt/
+RUN mkdir -p /opt \
+    && curl -SL http://mirrors.hust.edu.cn/apache/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz \
+    | tar -xJC /opt \
 
 # Copy Hive Config file
 ADD hive-site.xml $HIVE_HOME/conf/
