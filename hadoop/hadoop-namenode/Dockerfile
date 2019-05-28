@@ -15,7 +15,7 @@ COPY mapred-site.xml $HADOOP_HOME/etc/hadoop/
 
 RUN ls -l /
 RUN touch /opt/file1
-RUN curl -SL "http://mirrors.hust.edu.cn/apache/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz" \
+RUN curl -SL "http://mirrors.hust.edu.cn/apache/hive/hive-2.3.4/apache-hive-2.3.4-bin.tar.gz" \
     | tar -xJC /opt
 
 # Copy Hive Config file
