@@ -1,6 +1,6 @@
 FROM uhopper/hadoop-namenode:latest
 
-MAINTAINER niushuai(guisu2010@gmail.com)
+MAINTAINER niushuai "https://github.com/niushuai1991"
 
 ENV HIVE_VERSION 2.3.4
 ENV HIVE_HOME /opt/apache-hive-$HIVE_VERSION-bin
