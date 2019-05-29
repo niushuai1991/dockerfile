@@ -61,6 +61,13 @@ cd $HIVE_HOME/bin
 ./schematool -initSchema -dbType mysql
 ```
 
+这一步好像没办法执行成功，所以需要手动从容器里把脚本复制到本地进行数据库的初始化
+
+docker cp namenode:/opt/apache-hive-2.3.4-bin/scripts/metastore/upgrade/mysql/hive-schema-2.3.0.mysql.sql ./
+docker cp namenode:/opt/apache-hive-2.3.4-bin/scripts/metastore/upgrade/mysql/hive-txn-schema-2.3.0.mysql.sql ./
+
+
+
 执行wordcount测试
 ```
 cd /home/share
