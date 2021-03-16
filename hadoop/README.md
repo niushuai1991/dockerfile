@@ -26,7 +26,7 @@ docker network create --subnet=172.18.0.0/16 hadoopNet
 
 创建一个mysql实例，用于存储hive元数据
 ```
-docker run --name mysql --network-alias=mysql --net hadoopNet --ip 172.18.0.15  -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+docker run -d --name mysql --network-alias=mysql --net hadoopNet --ip 172.18.0.15  -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root  mysql:5.7
 ```
 创建hive数据库
 ```

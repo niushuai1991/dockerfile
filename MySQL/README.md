@@ -1,7 +1,22 @@
 # MySQL
 
 使用下面的命令将mysql的编码配置为utf8mb4，并设置root密码
-docker run -p 3306:3306 --restart always --name mymysql -v /etc/localtime:/etc/timezone:rw -v /etc/localtime:/etc/localtime:rw -e MYSQL_ROOT_PASSWORD=My_PASSWORD -d  mysql:8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -p 3306:3306 --restart always --name mysql -v /etc/localtime:/etc/timezone:rw -v /etc/localtime:/etc/localtime:rw -e MYSQL_ROOT_PASSWORD=root -d  mysql:8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+本地测试用
+
+
+
+```
+docker run --name mysql57 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=qqyzk0369 -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci 
+```
+
+
+
+```
+docker run --name mysql8 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=bbeaf096 -d mysql:8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci 
+```
+
 
 
 
