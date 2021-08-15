@@ -14,7 +14,7 @@ docker run --name mysql57 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=qqyzk0369 -d mysql
 
 
 ```
-docker run --name mysql8 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=bbeaf096 -d mysql:8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci 
+docker run --name mysql8 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=bbeaf096 -d mysql:8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
 

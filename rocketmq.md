@@ -30,7 +30,11 @@ docker run -d -p 10911:10911 -p 10909:10909 -v /opt/rocketmq/broker/logs:/root/l
 
 
 
+rocketmq-console
 
+```
+docker run -d -e "JAVA_OPTS=-Drocketmq.namesrv.addr=192.168.10.235:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false" -p 8089:8080 -t styletang/rocketmq-console-ng --name mq-console
+```
 
 
 

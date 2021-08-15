@@ -7,16 +7,13 @@
 ```
 docker pull redis:6.2.1
 ```
-也可能是
-```
-docker pull docker.io/redis:6.2.1
-```
+
 
 
 构建镜像
 
 ```
-docker build -t djn/redis:6.2.1 .
+docker build -t niushuai/redis:6.2.1 .
 ```
 
 
@@ -24,7 +21,7 @@ docker build -t djn/redis:6.2.1 .
 创建容器
 
 ```
-docker run -d --name redis -p 6379:6379 djn/redis:6.2.1
+docker run --restart=always -d --name redis -p 6379:6379 niushuai/redis:6.2.1
 ```
 
 
