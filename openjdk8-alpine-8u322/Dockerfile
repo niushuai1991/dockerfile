@@ -10,6 +10,7 @@ ARG PATH="$PATH:$JAVA_HOME/bin"
 RUN apk update && apk add curl && apk add busybox-extras && apk add drill && apk add bash && apk add bash-completion
 
 # 启用bcprov，解决openjdk不能正常请求https的问题
+# 如果要更新OpenJDK版本，sed命令中的76和后面的10可能需要修改
 RUN cd $JAVA_HOME/jre/lib/ext/ && \
     wget https://www.bouncycastle.org/download/bcprov-jdk18on-171.jar && \
     cd $JAVA_HOME/jre/lib/security/ && \
