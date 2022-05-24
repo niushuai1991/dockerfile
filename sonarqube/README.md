@@ -6,7 +6,13 @@
 
 ### 1.创建一个网络
 
+
+
+```
 docker network create --subnet=172.18.0.0/16 hadoopNet
+```
+
+
 
 ### 创建一个mysql容器
 
@@ -29,3 +35,14 @@ CREATE SCHEMA `sonar` DEFAULT CHARACTER SET utf8 ;
 ```
 docker run -d --name sonarqube --net hadoopNet --ip 172.18.0.16 -p 9000:9000 -p 9092:9092 -e SONARQUBE_JDBC_USERNAME=root -e SONARQUBE_JDBC_PASSWORD=root -e SONARQUBE_JDBC_URL='jdbc:mysql://mysql:3306/sonar?characterEncoding=utf8&useUnicode=true' sonarqube
 ```
+
+
+
+
+
+
+
+```
+mvn clean verify sonar:sonar  -Dsonar.projectKey=ef-parent -Dsonar.host.url=http://192.168.10.236:9000 -Dsonar.login=admin -Dsonar.password=123456eyolo
+```
+
