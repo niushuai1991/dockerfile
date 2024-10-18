@@ -1,0 +1,58 @@
+networks:
+  drone-net:
+    external: false
+services:
+  # 容器名称
+  drone-server:
+    container_name: drone-server
+    # 构建所使用的镜像
+    image: drone/drone
+    ports:
+      - 8611:80
+    # 映射容器内/data目录到宿主机的目录
+    volumes:
+      - /data/drone/data:/data
+    # 容器随docker自动启动
+    restart: always
+    privileged: true
+    networks:
+      - drone-net
+    environment:
+      - TZ=Asia/Shanghai
+      - DRONE_GITHUB_CLIENT_ID=
+      - DRONE_GITHUB_CLIENT_SECRET=
+      - DRONE_RPC_SECRET=bea26a2221fd8090ea38720fc445eca6
+      # 需要修改为自己的服务器内网IP或外网IP
+      - DRONE_SERVER_HOST=192.168.0.2:8611
+      - DRONE_SERVER_PROTO=http
+      - DRONE_GIT_ALWAYS_AUTH=false
+      - DRONE_USER_CREATE=username:niushuai1991,admin:true
+
+  docker-runner:
+    container_name: drone-runner
+    image: drone/drone-runner-docker
+    restart: always
+    privileged: true
+    networks:
+      - drone-net
+    depends_on:
+      - drone-server
+    volumes:
+      # 如果.drone.yml type是docker，则需要这个卷
+      - /var/run/docker.sock:/var/run/docker.sock
+    #   - /sync/drone/agent/drone.key:/root/drone.key
+    environment:
+      - TZ=Asia/Shanghai
+      # 用于连接到Drone服务器的协议。该值必须是http或https。(同上)
+      - DRONE_RPC_PROTO=http
+      # 用于连接到Drone服务器的主机名(同上)
+      - DRONE_RPC_HOST=drone-server:80
+      # Drone服务器进行身份验证的共享密钥，和上面设置一样（生成rpc密钥）
+      - DRONE_RPC_SECRET=bea26a2221fd8090ea38720fc445eca6
+      # 限制运行程序可以执行的并发管道数
+      - DRONE_RUNNER_CAPACITY=1
+        # docker runner 名称
+      - DRONE_RUNNER_NAME=drone-runner
+      - DRONE_DEBUG=false                      # 调试相关，部署的时候建议先打开
+      - DRONE_LOGS_DEBUG=false                 # 调试相关，部署的时候建议先打开
+      - DRONE_LOGS_TRACE=false                 # 调试相关，部署的时候建议先打开

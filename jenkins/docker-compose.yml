@@ -1,0 +1,18 @@
+services:
+  # 容器名称
+  jenkins:
+    container_name: jenkins
+    # 构建所使用的镜像
+    image: jenkins/jenkins:lts
+    ports:
+      - 8000:8080
+      - 50000:50000
+    # 映射容器内数据目录挂载到宿主机的目录
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/jenkins/jenkins_home:/var/jenkins_home
+    # 容器随docker自动启动
+    restart: always
+    privileged: true
+    environment:
+      - JAVA_OPTS=-Dhudson.footerURL=http://github.com/niushuai1991
