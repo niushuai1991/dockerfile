@@ -1,0 +1,18 @@
+services:
+  # 容器名称
+  vsftpd:
+    container_name: vsftpd
+    # 构建所使用的镜像
+    image: fauria/vsftpd
+    ports:
+      - 21:21
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      # 日志
+      #- /var/log/vsftpd:/var/log/vsftpd
+      - /data:/home/vsftpd
+    # 容器随docker自动启动
+    restart: always
+    environment:
+      - FTP_USER=admin
+      - FTP_PASS=123456
