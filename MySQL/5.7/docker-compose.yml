@@ -3,7 +3,7 @@ services:
   mysql57:
     container_name: mysql57
     # 构建所使用的镜像
-    image: mysql:5.7
+    image: mysql:5.7.44
     ports:
       - 3306:3306
     volumes:

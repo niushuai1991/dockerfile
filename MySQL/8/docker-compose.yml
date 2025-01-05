@@ -1,0 +1,18 @@
+services:
+  # 容器名称
+  mysql8:
+    container_name: mysql8
+    # 构建所使用的镜像
+    image: mysql:8
+    ports:
+      - 3306:3306
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      # 可以把mysql的数据目录映射到宿主机
+      # - /data/mysql/db:/var/lib/mysql
+    # 容器随docker自动启动
+    restart: always
+    environment:
+      - MYSQL_DATABASE=root
+      - MYSQL_ROOT_PASSWORD=123456
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
