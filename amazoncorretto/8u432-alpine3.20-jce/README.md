@@ -26,7 +26,14 @@ docker build -t amazoncorretto:8u432-alpine3.20-jce .
 docker build -t niushuai/amazoncorretto:8u432-alpine3.20-jce .
 docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20-jce .
 
+使用docker buildx构建镜像
+```
+docker buildx create --name mybuilder --driver docker-container --use --driver-opt env.http_proxy=172.24.240.1:7890 --driver-opt env.https_proxy=172.24.240.1:7890
+docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20-jce --push .
+```
 
+buildx create命令里使用的--driver-opt参数是用于指定代理服务器。
+buildx build命令里，--push参数是在构建完成后直接推送到镜像仓库里。
 
 
 linux/amd64
@@ -36,6 +43,7 @@ linux/amd64
 [JDK8安装JCE](https://gist.github.com/enrique-fernandez-polo/44a23b222d0e8abcae7a42152c4a0d93)
 
 [好好学Docker：基于Docker buildx构建多平台镜像](https://www.voidking.com/dev-docker-buildx/)
+[docker使用buildx构建多平台镜像如何配置代理进行镜像拉取](https://blog.csdn.net/blake32/article/details/139681251)
 ## docker镜像导入导出
 
 把镜像导出为tar文件
