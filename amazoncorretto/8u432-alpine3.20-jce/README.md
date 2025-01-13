@@ -23,13 +23,19 @@ RUN wget -q --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://
 ```
 
 docker build -t amazoncorretto:8u432-alpine3.20-jce .
+docker build -t niushuai/amazoncorretto:8u432-alpine3.20-jce .
+docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20-jce .
 
+
+
+
+linux/amd64
 
 [Setting the timezone](https://wiki.alpinelinux.org/wiki/Setting_the_timezone)
 
 [JDK8安装JCE](https://gist.github.com/enrique-fernandez-polo/44a23b222d0e8abcae7a42152c4a0d93)
 
-
+[好好学Docker：基于Docker buildx构建多平台镜像](https://www.voidking.com/dev-docker-buildx/)
 ## docker镜像导入导出
 
 把镜像导出为tar文件
