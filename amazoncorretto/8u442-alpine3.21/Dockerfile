@@ -1,4 +1,4 @@
-FROM amazoncorretto:8u432-alpine3.20
+FROM amazoncorretto:8u442-alpine3.21
 
 RUN wget -q --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip" -O jce_policy-8.zip && \
     unzip -qo jce_policy-8.zip && \
