@@ -22,14 +22,12 @@ RUN wget -q --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://
     apk add --no-cache tzdata
 ```
 
-docker build -t amazoncorretto:8u432-alpine3.20-jce .
-docker build -t niushuai/amazoncorretto:8u432-alpine3.20-jce .
-docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20-jce .
+docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20 .
 
 使用docker buildx构建镜像
 ```
 docker buildx create --name mybuilder --driver docker-container --use --driver-opt env.http_proxy=172.24.240.1:7890 --driver-opt env.https_proxy=172.24.240.1:7890
-docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20-jce --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20 --push .
 ```
 
 buildx create命令里使用的--driver-opt参数是用于指定代理服务器。
