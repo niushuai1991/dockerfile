@@ -3,10 +3,10 @@ services:
   vaultwarden:
     container_name: vaultwarden
     # 构建所使用的镜像
-    image: vaultwarden/server:1.33.2
-    # ports:
-      # - 13928:80
-      # - 3012:3012
+    image: vaultwarden/server:latest
+    ports:
+      - 80:80
+      - 3012:3012
     volumes:
       - vaultwarden_volume:/data
     # 容器随docker自动启动
@@ -19,6 +19,3 @@ services:
       - WEBSOCKET_ENABLED=false
 volumes:
   vaultwarden_volume:
-networks:
-  mynet:
-    external: true
