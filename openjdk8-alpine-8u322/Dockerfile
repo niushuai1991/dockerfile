@@ -3,8 +3,8 @@ FROM eclipse-temurin:8u322-b06-jdk-alpine
 LABEL author=niushuai
 
 # 添加环境变量
-ARG CLASSPATH=".:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar"
-ARG PATH="$PATH:$JAVA_HOME/bin"
+ENV CLASSPATH=".:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar"
+ENV PATH="$PATH:$JAVA_HOME/bin"
 
 # 安装curl,busybox（包含telnet),bash
 RUN apk update && apk add curl && apk add busybox-extras && apk add drill && apk add bash && apk add bash-completion
