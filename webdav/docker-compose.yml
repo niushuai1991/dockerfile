@@ -1,0 +1,21 @@
+services:
+  # 容器名称
+  webdav:
+    container_name: webdav
+    # 构建所使用的镜像
+    image: ghcr.io/hacdias/webdav:v5.7.3
+    ports:
+      - 32812:6065
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - webdav_data:/data
+      - ./config.yml:/config.yml
+    restart: 'unless-stopped'
+    networks:
+      - mynet
+    command: ['-c','/config.yml']
+volumes:
+  webdav_data:
+networks:
+  mynet:
+    external: true

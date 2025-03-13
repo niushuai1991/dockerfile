@@ -1,0 +1,26 @@
+# Server related settings
+address: 0.0.0.0
+# Default 6065
+port: 6065
+auth: true
+tls: false
+cert: cert.pem
+key: key.pem
+
+# The directory that will be able to be accessed by the users when connecting.
+# This directory will be used by users unless they have their own 'directory' defined.
+# Default is '.' (current directory).
+directory: /data
+
+
+
+# Default user settings (will be merged)
+scope: .
+modify: true
+rules: []
+
+users:
+  - username: ns
+    password: 'Qi3!@i4fs342'
+    #directory: /data/ns
+    permissions: CRUD
