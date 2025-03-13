@@ -6,18 +6,18 @@
 
 连接
 ```
-curl -u ns:Qi3!@i4fs342 http://localhost:32812
+curl -u ns:Qi3!@i4fs342 http://localhost:6065
 ```
 
 
 创建目录
 ```
-curl -X MKCOL -u ns:Qi3!@i4fs342 http://localhost:32812/test
+curl -X MKCOL -u ns:Qi3!@i4fs342 http://localhost:6065/test
 ```
 
 上传文件
 ```
-curl -u ns:Qi3!@i4fs342 -T test.txt http://localhost:32812/test/test.txt
+curl -u ns:Qi3!@i4fs342 -T test.txt http://localhost:6065/test/test.txt
 ```
 
 在使用内网穿透后，通过服务器进行测试

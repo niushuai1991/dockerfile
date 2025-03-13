@@ -5,7 +5,7 @@ services:
     # 构建所使用的镜像
     image: ghcr.io/hacdias/webdav:v5.7.3
     ports:
-      - 32812:6065
+      - 6065:6065
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - webdav_data:/data
