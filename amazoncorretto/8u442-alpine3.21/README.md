@@ -22,12 +22,12 @@ RUN wget -q --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://
     apk add --no-cache tzdata
 ```
 
-docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20 .
+docker buildx build --platform linux/amd64,linux/arm64 --builder mybuilder -t niushuai/amazoncorretto:8u432-alpine3.20 .
 
 使用docker buildx构建镜像
 ```
-docker buildx create --name mybuilder --driver docker-container --use --driver-opt env.http_proxy=172.24.240.1:7890 --driver-opt env.https_proxy=172.24.240.1:7890
-docker buildx build --platform linux/amd64,linux/arm64 -t niushuai/amazoncorretto:8u432-alpine3.20 --push .
+docker buildx create --name mybuilder --driver docker-container --use --driver-opt env.http_proxy=172.17.0.1:7890 --driver-opt env.https_proxy=172.17.0.1:7890
+docker buildx build --platform linux/amd64,linux/arm64 --builder mybuilder -t niushuai/amazoncorretto:8u432-alpine3.20 --push .
 ```
 
 buildx create命令里使用的--driver-opt参数是用于指定代理服务器。
@@ -49,3 +49,13 @@ docker save -o amazoncorretto-8-alpine-jdk-jce.tar amazoncorretto:8-alpine-jdk-j
 从tar文件导入镜像
 docker load -i amazoncorretto-8-alpine-jdk-jce.tar
 
+
+## 问题
+
+### Handler dispatch faled, nested exception is java.lang.NoClassDefFoundError. Could not initialize class sun.awt.X11FontManager
+
+这个问题是在java程序里使用Excel相关的库时会遇到，即使镜像已经安装了FontManager也不行，必须有字体才会正常。
+在alpine系统里有[一些可以安装的字体](https://wiki.alpinelinux.org/wiki/Fonts#List_of_available_fonts)
+```
+apk add --no-cache fontconfig font-dejavu
+```

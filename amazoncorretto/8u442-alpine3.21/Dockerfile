@@ -8,5 +8,5 @@ RUN wget -q --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://
     rm -rf UnlimitedJCEPolicyJDK8 && \
     wget -q "https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk18on/1.79/bcprov-jdk18on-1.79.jar" -O ${JAVA_HOME}/jre/lib/ext/bcprov-jdk18on-1.79.jar && \
     sed -i '/security.provider.9=sun.security.smartcardio.SunPCSC/a\security.provider.10=org.bouncycastle.jce.provider.BouncyCastleProvider' ${JAVA_HOME}/jre/lib/security/java.security && \
-    apk add --no-cache fontconfig && \
+    apk add --no-cache fontconfig font-dejavu && \
     apk cache clean
