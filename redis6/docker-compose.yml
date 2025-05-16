@@ -1,0 +1,14 @@
+services:
+  # 容器名称
+  redis:
+    container_name: redis
+    # 构建所使用的镜像
+    image: bitnami/redis:6.2
+    ports:
+      - 6379:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PASSWORD=D(D#85R$JH
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
