@@ -8,7 +8,8 @@ services:
       - 6379:6379
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_PASSWORD=D(D#85R$JH
+      - REDIS_PASSWORD=DJ23kj_1129
     volumes:
       - /etc/localtime:/etc/localtime:ro
     restart: always
+
