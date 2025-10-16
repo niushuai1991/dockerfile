@@ -1,0 +1,11 @@
+services:
+  redis:
+    container_name: redis
+    image: redis:7.4.6-alpine
+    ports:
+      - 6379:6379
+    environment:
+      - TZ=Asia/Shanghai
+    command: redis-server --requirepass P@ssw0rd
+    restart: unless-stopped
+
