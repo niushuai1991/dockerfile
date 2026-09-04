@@ -1,0 +1,1 @@
+0 3 * * * /usr/bin/docker image prune -f

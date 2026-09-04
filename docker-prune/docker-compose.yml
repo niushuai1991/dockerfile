@@ -1,0 +1,9 @@
+services:
+  docker-prune:
+    build: .
+    container_name: docker-prune
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
